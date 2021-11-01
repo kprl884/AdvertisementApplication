@@ -1,4 +1,4 @@
-package com.alpstein.myadapplication
+package com.alpstein.myadapplication.utils
 
 import android.os.Handler
 

@@ -1,2 +1,3 @@
 rootProject.name = "My Ad Application"
 include ':app'
+include ':nativetemplates'
