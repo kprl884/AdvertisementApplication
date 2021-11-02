@@ -1,6 +1,7 @@
 package com.alpstein.myadapplication.view
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +17,6 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val admobHandler = AdmobHandler()
-    private var mInterstitialAd: InterstitialAd? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,21 +30,32 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            //          BANNER
+            adView.loadAd(admobHandler.adRequest)
+            admobHandler.bannerListener(binding.adView)
+            //             INTERSTITIAL
+            interstitialButton.setOnClickListener {
+                interstitialShow()
+            }
+            //          NATIVE
+            showNativeBtn.setOnClickListener {
+                //can set small or medium native template
+                binding.nativeTemplateViewSmall.visibility = View.VISIBLE
+                admobHandler.nativeAd(binding.nativeTemplateViewSmall, requireContext())
+            }
+            //      REWARD
+            loadRewardBtn.setOnClickListener {
+                context?.let { it1 -> admobHandler.loadRewardAd(requireContext()) }
+            }
+            showRewardBtn.setOnClickListener {
+                rewardedInterstitialShow()
+            }
+            // OPEN-APP
+            showOpenApp.setOnClickListener {
 
-        //          BANNER
-        binding.adView.loadAd(admobHandler.adRequest)
-        admobHandler.bannerListener(binding.adView)
-        //             INTERSTITIAL
-        binding.interstitialButton.setOnClickListener {
-            interstitialShow()
+            }
         }
-
-        binding.showNativeBtn.setOnClickListener {
-            //can set small or medium native template
-            admobHandler.nativeAd(binding.nativeTemplateViewSmall, requireContext())
-        }
-
-
     }
 
     private fun interstitialShow() {
@@ -59,5 +70,10 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun rewardedInterstitialShow() {
+        admobHandler.showLoadedRewardAd()?.show(activity) { rewardItem ->
+            Log.d("TAG", rewardItem.type + rewardItem.amount)
+        }
+    }
 
 }

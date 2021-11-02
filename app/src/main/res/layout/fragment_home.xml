@@ -23,7 +23,7 @@
             android:id="@+id/interstitialButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="interstitialButton"
+            android:text="interstitial Btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,11 +32,37 @@
             android:id="@+id/showNativeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="showNativeBtn"
+            android:text="show Native"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/interstitialButton" />
 
+        <Button
+            android:id="@+id/loadRewardBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="load Reward"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/showNativeBtn" />
+
+        <Button
+            android:id="@+id/showRewardBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="show Reward"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/loadRewardBtn" />
+
+        <Button
+            android:id="@+id/showOpenApp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="show showOpenApp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/showRewardBtn" />
 
         <com.google.android.ads.nativetemplates.TemplateView
             android:id="@+id/nativeTemplateViewMedium"
@@ -53,6 +79,7 @@
             android:id="@+id/nativeTemplateViewSmall"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             app:gnt_template_type="@layout/gnt_small_template_view"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

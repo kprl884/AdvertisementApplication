@@ -13,19 +13,16 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdOptions
+import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAd
+import com.google.android.gms.ads.rewardedinterstitial.RewardedInterstitialAdLoadCallback
 
-
-const val GAME_LENGTH_MILLISECONDS = 3000L
-const val AD_UNIT_ID = "ca-app-pub-3940256099942544/1033173712"
-
-class AdmobHandler()  {
+class AdmobHandler {
 
     val adRequest: AdRequest = AdRequest.Builder().build()
-
+    private var rewardedInterstitialAd: RewardedInterstitialAd? = null
     private var ctx: Context? = null
     private var mInterstitialAd: InterstitialAd? = null
-
-    private var mAdIsLoading: Boolean = false
+    private val LOG_TAG = "AppOpenManager"
 
     //      BANNER
     fun bannerListener(view: AdView) {
@@ -113,6 +110,7 @@ class AdmobHandler()  {
         }
     }
 
+    //      NATIVE
     fun nativeAd(templateView: TemplateView, context: Context) {
         val adLoader = AdLoader.Builder(context, "ca-app-pub-3940256099942544/2247696110")
 
@@ -128,7 +126,8 @@ class AdmobHandler()  {
                 override fun onAdLoaded() {
                     super.onAdLoaded()
                     val styles =
-                        NativeTemplateStyle.Builder().withMainBackgroundColor(ColorDrawable(Color.RED)).build()
+                        NativeTemplateStyle.Builder()
+                            .withMainBackgroundColor(ColorDrawable(Color.RED)).build()
                     templateView.setStyles(styles)
                 }
             })
@@ -140,4 +139,27 @@ class AdmobHandler()  {
             )
             .build().loadAd(adRequest)
     }
+
+    //      REWARD
+    fun loadRewardAd(context: Context) {
+        // Use the test ad unit ID to load an ad.
+        RewardedInterstitialAd.load(context, "ca-app-pub-3940256099942544/5354046379",
+            adRequest, object : RewardedInterstitialAdLoadCallback() {
+                override fun onAdLoaded(p0: RewardedInterstitialAd) {
+                    super.onAdLoaded(p0)
+                    rewardedInterstitialAd = p0
+                    Log.d(LOG_TAG, "onAdLoaded")
+                }
+
+                override fun onAdFailedToLoad(p0: LoadAdError) {
+                    super.onAdFailedToLoad(p0)
+                    Log.d(LOG_TAG, "onAdFailedToLoad")
+                }
+            })
+    }
+
+    fun showLoadedRewardAd(): RewardedInterstitialAd? {
+        return rewardedInterstitialAd
+    }
+
 }
