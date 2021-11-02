@@ -80,28 +80,24 @@ class AdmobHandler {
         return mInterstitialAd
     }
 
-    // Show the ad if it's ready
+
     fun showInterstitial(interstitialAd: InterstitialAd?, context: Context, activity: Activity) {
         if (mInterstitialAd != null) {
             mInterstitialAd?.fullScreenContentCallback = object : FullScreenContentCallback() {
                 override fun onAdDismissedFullScreenContent() {
                     Log.d("InterstitialAd", "Ad was dismissed.")
-                    // Don't forget to set the ad reference to null so you
-                    // don't show the ad a second time.
                     mInterstitialAd = null
                     interstitialAd(context)
                 }
 
                 override fun onAdFailedToShowFullScreenContent(adError: AdError?) {
                     Log.d("InterstitialAd", "Ad failed to show.")
-                    // Don't forget to set the ad reference to null so you
-                    // don't show the ad a second time.
                     mInterstitialAd = null
                 }
 
                 override fun onAdShowedFullScreenContent() {
                     Log.d("InterstitialAd", "Ad showed fullscreen content.")
-                    // Called when ad is dismissed.
+
                 }
             }
             mInterstitialAd?.show(activity)
@@ -110,17 +106,14 @@ class AdmobHandler {
         }
     }
 
-    //      NATIVE
     fun nativeAd(templateView: TemplateView, context: Context) {
         val adLoader = AdLoader.Builder(context, "ca-app-pub-3940256099942544/2247696110")
 
         adLoader.forNativeAd { ad: NativeAd ->
-            // Show the ad.
             templateView.setNativeAd(ad)
         }
             .withAdListener(object : AdListener() {
                 override fun onAdFailedToLoad(adError: LoadAdError) {
-                    // Handle the failure by logging, altering the UI, and so on.
                 }
 
                 override fun onAdLoaded() {
@@ -133,16 +126,12 @@ class AdmobHandler {
             })
             .withNativeAdOptions(
                 NativeAdOptions.Builder()
-                    // Methods in the NativeAdOptions.Builder class can be
-                    // used here to specify individual options settings.
                     .build()
             )
             .build().loadAd(adRequest)
     }
 
-    //      REWARD
     fun loadRewardAd(context: Context) {
-        // Use the test ad unit ID to load an ad.
         RewardedInterstitialAd.load(context, "ca-app-pub-3940256099942544/5354046379",
             adRequest, object : RewardedInterstitialAdLoadCallback() {
                 override fun onAdLoaded(p0: RewardedInterstitialAd) {

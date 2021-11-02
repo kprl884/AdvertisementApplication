@@ -31,31 +31,34 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            //          BANNER
+
             adView.loadAd(admobHandler.adRequest)
             admobHandler.bannerListener(binding.adView)
-            //             INTERSTITIAL
+
             interstitialButton.setOnClickListener {
                 interstitialShow()
             }
-            //          NATIVE
+
             showNativeBtn.setOnClickListener {
                 //can set small or medium native template
                 binding.nativeTemplateViewSmall.visibility = View.VISIBLE
                 admobHandler.nativeAd(binding.nativeTemplateViewSmall, requireContext())
             }
-            //      REWARD
+
             loadRewardBtn.setOnClickListener {
                 context?.let { it1 -> admobHandler.loadRewardAd(requireContext()) }
             }
+
             showRewardBtn.setOnClickListener {
                 rewardedInterstitialShow()
             }
-            // OPEN-APP
+
             showOpenApp.setOnClickListener {
 
             }
         }
+
+
     }
 
     private fun interstitialShow() {
