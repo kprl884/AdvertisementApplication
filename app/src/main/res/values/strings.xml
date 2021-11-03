@@ -12,4 +12,6 @@
     <string name="interstitial_ad_unit_id">YOUR_INTERSTITIAL_AD_UNIT_ID</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="interstitalBtn">interstitial Btn</string>
+    <string name="loadRewardBun">load Reward</string>
 </resources>

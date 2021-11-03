@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.alpstein.myadapplication.R
 import com.alpstein.myadapplication.databinding.FragmentHomeBinding
 import com.alpstein.myadapplication.handler.AdmobHandler
+import com.alpstein.myadapplication.view.views.ButtonView
 import com.google.android.gms.ads.interstitial.InterstitialAd
 
 
@@ -24,6 +25,7 @@ class HomeFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+
         admobHandler.interstitialAd(requireContext())
         return binding.root
     }
@@ -51,10 +53,6 @@ class HomeFragment : Fragment() {
 
             showRewardBtn.setOnClickListener {
                 rewardedInterstitialShow()
-            }
-
-            showOpenApp.setOnClickListener {
-
             }
         }
 
