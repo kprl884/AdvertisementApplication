@@ -15,7 +15,7 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        Log.d("Alp", "up")
+       
 
 
         return inflater.inflate(R.layout.fragment_splash, container, false)
