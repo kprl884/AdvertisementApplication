@@ -15,16 +15,12 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-       
-
-
         return inflater.inflate(R.layout.fragment_splash, container, false)
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Run.after(7000) { nextScreen() }
+        Run.after(11000) { nextScreen() }
     }
     private fun nextScreen() {
         NavHostFragment.findNavController(this@SplashFragment).navigate(

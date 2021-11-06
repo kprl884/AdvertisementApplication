@@ -14,7 +14,6 @@ class ButtonView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 1,
-
     ) : ConstraintLayout(context, attrs, defStyleAttr) {
     private var interstitialButton: Button? = null
     private var showNativeBtn: Button? = null
@@ -32,12 +31,10 @@ class ButtonView @JvmOverloads constructor(
         adView = findViewById(R.id.adView)
 
         interstitialButton!!.text = context.getString(R.string.interstitalBtn)
-        showNativeBtn!!.text = "show Native"
+        showNativeBtn!!.text = context.getString(R.string.show_native)
         loadRewardBtn!!.text = context.getString(R.string.loadRewardBun)
         showRewardBtn!!.text = "show Reward"
         nativeTemplateViewMedium!!.visibility = View.GONE
-        adView!!.adSize = AdSize.BANNER
-        adView!!.adUnitId = "ca-app-pub-3940256099942544/6300978111"
 
     }
 

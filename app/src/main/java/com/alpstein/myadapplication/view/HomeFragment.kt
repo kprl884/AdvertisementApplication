@@ -18,20 +18,23 @@ import com.google.android.gms.ads.interstitial.InterstitialAd
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private val admobHandler = AdmobHandler()
-
+    private lateinit var buttonView: ButtonView
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-
         admobHandler.interstitialAd(requireContext())
-        return binding.root
+        return inflater.inflate(R.layout.fragment_home, container, false).apply {
+            buttonView = this as ButtonView
+        }
+        //return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        buttonView.initView()
         binding.apply {
 
             adView.loadAd(admobHandler.adRequest)

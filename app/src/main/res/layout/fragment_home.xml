@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.alpstein.myadapplication.view.views.ButtonView
+        android:id="@+id/buttonView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/blue"
@@ -23,7 +24,6 @@
             android:id="@+id/interstitialButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="interstitial Btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +32,6 @@
             android:id="@+id/showNativeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="show Native"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/interstitialButton" />
@@ -41,7 +40,6 @@
             android:id="@+id/loadRewardBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="load Reward"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/showNativeBtn" />
@@ -50,7 +48,6 @@
             android:id="@+id/showRewardBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="show Reward"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/loadRewardBtn" />
@@ -78,5 +75,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.alpstein.myadapplication.view.views.ButtonView>
 </layout>

@@ -2,4 +2,5 @@
 <resources>
     <string name="interstitalBtn">interstitial Btn</string>
     <string name="loadRewardBun">load Reward</string>
+    <string name="show_native">show Native</string>
 </resources>
