@@ -25,9 +25,8 @@ This application includes Admob SDK, In-App Messaging, Crashlytics, Lottie, Flur
 # Lottie
     Lottie is a library for Android, iOS, Web, and Windows that parses Adobe After Effects animations exported as json with Bodymovin and renders them natively on mobile and on the web!
     LottiAnimationView created in splash xml like this.
-    
 
-https://user-images.githubusercontent.com/62509948/140515228-72bb902d-4f3f-4735-9e5b-72244461a9b9.mp4
+https://user-images.githubusercontent.com/62509948/140755034-8ca4ce46-4697-4c93-8a28-f0ae4feb9418.mp4
 
 
     <com.airbnb.lottie.LottieAnimationView
